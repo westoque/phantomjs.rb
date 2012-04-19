@@ -1,6 +1,8 @@
 # phantomjs.rb
 
-A ruby wrapper for phantomjs
+A ruby wrapper for phantomjs. The binaries are in `vendor` and it will
+automatically detect what OS you are using and will try to use the
+appropriate binaries.
 
 ## Install
 
