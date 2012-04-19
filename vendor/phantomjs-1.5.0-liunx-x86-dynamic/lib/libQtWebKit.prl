@@ -1,0 +1,6 @@
+QMAKE_PRL_BUILD_DIR = /home/turnip/phantomjs/src/qt/src/3rdparty/webkit/Source/WebKit/qt/
+QMAKE_PRO_INPUT = QtWebKit.pro
+QMAKE_PRL_TARGET = libQtWebKit.so.4.9.0
+QMAKE_PRL_DEFINES = QT_SHARED
+QMAKE_PRL_CONFIG = lex yacc uic resources qt release incremental link_prl gdb_dwarf_index qpa def_files_disabled no_mocdepend release qt_no_framework release shared dll qpa largefile precompile_header mmx 3dnow sse sse2 sse3 ssse3 sse4_1 sse4_2 avx exceptions_off dylib create_prl link_prl depend_includepath QTDIR_build building-libs depend_includepath embedded standalone_package depend_includepath include_webinspector production production embedded no_debug_info link_pkgconfig production qt_install_headers qt warn_on depend_includepath qmake_cache target_qt hide_symbols create_libtool create_pc moc thread shared dll
+QMAKE_PRL_VERSION = 4.9.0
