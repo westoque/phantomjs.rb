@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = Phantomjs::VERSION
   s.authors     = ["William Estoque"]
   s.email       = ["william.estoque@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "http://westoque.com"
   s.summary     = %q{Ruby wrapper for phantomjs}
   s.description = %q{Ruby wrapper for phantomjs}
 
