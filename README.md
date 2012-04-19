@@ -13,6 +13,13 @@ gem install phantomjs.rb
 ## Usage
 
 ```rb
-output = Phantomjs.run(script_name, arg1, arg2)
+script = File.expand_path('./my_runner.js')
+output = Phantomjs.run(script, 'myarg1', 'myarg2')
 p output # Whatever it outputs from stdout
+```
+
+The equivalent code above will generate:
+
+```sh
+/absolute/path/to/phantomjs /absolute/my_runner.js myarg1 myarg2
 ```
