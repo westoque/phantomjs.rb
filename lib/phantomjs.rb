@@ -20,13 +20,15 @@ module Phantomjs
 
   def get_executable
     if Os.is_mac?
-      File.expand_path(File.dirname(__FILE__) + "/../vendor/phantomjs-1.4.1_OSX/bin/phantomjs")
+      require 'phantomjs-mac'
     elsif Os.is_linux?
-      File.expand_path(File.dirname(__FILE__) + "/../vendor/phantomjs-1.5.0-liunx-x86-dynamic/bin/phantomjs")
+      require 'phantomjs-linux'
     else
       # Sorry windows guy
       # Nothing here
     end
+
+    Phantomjs.executable_path
   end
 end
 
