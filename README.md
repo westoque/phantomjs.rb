@@ -1,5 +1,7 @@
 # phantomjs.rb
 
+[![Build Status](https://secure.travis-ci.org/westoque/phantomjs.rb.png?branch=master)](http://travis-ci.org/westoque/phantomjs.rb)
+
 A ruby wrapper for phantomjs. The binaries are in `vendor` and it will
 automatically detect what OS you are using and will try to use the
 appropriate binaries.
