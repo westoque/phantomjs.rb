@@ -6,5 +6,3 @@ language: ruby
 
 rvm:
   - 1.9.3
-
-script: "bundle exec ruby spec/phantomjs_spec.rb"
