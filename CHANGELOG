@@ -1,6 +1,10 @@
+2012.06.06, Version 0.0.4
+
+  * Added specs to travis-ci.
+
 2012.05.22, Version 0.0.3
 
-  * Decoupled binaries from the main gem into separate gems. (Maxwell Salzberg)
+  * Decoupled binaries from the main gem into separate gems. (#2) (Maxwell Salzberg)
 
 0.0.2
 
