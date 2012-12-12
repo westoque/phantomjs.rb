@@ -13,7 +13,14 @@ module Phantomjs
   def run(script, *args)
     string_args = args.join(" ")
     @executable ||= get_executable
-    `#{@executable} #{script} #{string_args}`
+
+    if block_given?
+      IO.popen("#{@executable} #{script} #{string_args}").each_line do |line|
+        yield line
+      end
+    else
+      `#{@executable} #{script} #{string_args}`
+    end
   end
 
   private
