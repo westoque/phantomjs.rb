@@ -43,20 +43,20 @@ module Os
   # Again, Fight the power
   extend self
 
-  # universal-darwin9.0 shows up for RUBY_PLATFORM on os X leopard with the bundled ruby. 
+  # universal-darwin9.0 shows up for RUBY_PLATFORM on os X leopard with the bundled ruby.
   # Installing ruby in different manners may give a different result, so beware.
   # Examine the ruby platform yourself. If you see other values please comment
   # in the snippet on dzone and I will add them.
 
   def is_mac?
-    RUBY_PLATFORM.downcase.include?("darwin")
+    RUBY_PLATFORM.downcase.include?("darwin") or RbConfig::CONFIG['host_os'].include?("darwin")
   end
 
   def is_windows?
-    RUBY_PLATFORM.downcase.include?("mswin")
+    RUBY_PLATFORM.downcase.include?("mswin") or RbConfig::CONFIG['host_os'].include?("mswin")
   end
 
   def is_linux?
-    RUBY_PLATFORM.downcase.include?("linux")
+    RUBY_PLATFORM.downcase.include?("linux") or RbConfig::CONFIG['host_os'].include?("linux")
   end
 end

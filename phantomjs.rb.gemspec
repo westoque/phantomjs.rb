@@ -23,9 +23,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec"
   s.add_development_dependency "rake"
 
-  if RUBY_PLATFORM =~ /linux/
+  if RUBY_PLATFORM =~ /linux/ or RbConfig::CONFIG['host_os'] =~ /linux/
     s.add_runtime_dependency 'phantomjs-linux'
-  elsif RUBY_PLATFORM =~ /darwin/
+  elsif RUBY_PLATFORM =~ /darwin/ or RbConfig::CONFIG['host_os'] =~ /darwin/
     s.add_runtime_dependency 'phantomjs-mac'
   end
 end
