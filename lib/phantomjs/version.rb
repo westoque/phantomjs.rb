@@ -1,3 +1,3 @@
-module Phantomjs
-  VERSION = "0.0.5"
+class Phantomjs
+  VERSION = "1.0.0"
 end
