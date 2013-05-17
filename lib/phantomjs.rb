@@ -11,6 +11,8 @@ class Phantomjs
   #
   # Returns the stdout output of phantomjs
   def self.run(script, *args)
+    raise NoSuchPathError unless File.exist?(File.expand_path(script))
+
     string_args = args.join(" ")
 
     begin

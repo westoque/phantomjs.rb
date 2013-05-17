@@ -14,6 +14,13 @@ describe Phantomjs do
       end
     end
 
+    it 'raises an error when the script does not exist' do
+      script = File.expand_path('./doesnt_exist.js')
+      expect {
+        Phantomjs.run(script)
+      }.to raise_error(Phantomjs::NoSuchPathError)
+    end
+
     it "runs phantomjs binary with the correct arguments" do
       script = File.expand_path('./spec/runner.js')
       result = Phantomjs.run(script, 'foo1', 'foo2')
