@@ -2,6 +2,18 @@ require 'phantomjs'
 
 describe Phantomjs do
   describe ".run" do
+    describe 'when phantomjs is non installed' do
+      before { Phantomjs::EXEC = 'not_existing_phantomjs' }
+      after  { Phantomjs::EXEC = 'phantomjs' }
+
+      it "raises an error" do
+        script = File.expand_path('./spec/runner.js')
+        expect {
+          Phantomjs.run(script, 'foo1', 'foo2')
+        }.to raise_error(Phantomjs::CommandNotFoundError)
+      end
+    end
+
     it "runs phantomjs binary with the correct arguments" do
       script = File.expand_path('./spec/runner.js')
       result = Phantomjs.run(script, 'foo1', 'foo2')
