@@ -24,7 +24,7 @@ describe Phantomjs do
     it "runs phantomjs binary with the correct arguments" do
       script = File.expand_path('./spec/runner.js')
       result = Phantomjs.run(script, 'foo1', 'foo2')
-      result.should eq("bar foo1 foo2\n")
+      result.should eq("bar\nfoo1\nfoo2\n")
     end
     
     it "accepts a block that will get called for each line of output" do
@@ -33,7 +33,25 @@ describe Phantomjs do
       Phantomjs.run(script, 'foo1', 'foo2') do |l|
         line << l
       end
-      line.should eq("bar foo1 foo2\n")
+      line.should eq("bar\nfoo1\nfoo2\n")
+    end
+
+    it "accepts empty parameters" do
+      line = ''
+      script = File.expand_path('./spec/runner.js')
+      Phantomjs.run(script, 'foo1', 'foo2', '') do |l|
+        line << l
+      end
+      line.should eq("bar\nfoo1\nfoo2\n\n")
+    end
+
+    it "accepts parameters with spaces" do
+      line = ''
+      script = File.expand_path('./spec/runner.js')
+      Phantomjs.run(script, 'foo bar', 'foo2') do |l|
+        line << l
+      end
+      line.should eq("bar\nfoo bar\nfoo2\n")
     end
   end
 end
