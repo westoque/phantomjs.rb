@@ -19,7 +19,8 @@ class Phantomjs
 
     begin
       if block_given?
-        IO.popen("#{EXEC} #{script} #{string_args}").each_line do |line|
+        # IO.popen("#{EXEC} #{script} #{string_args}").each_line do |line|
+        IO.popen([EXEC, script, args].flatten).each_line do |line|
           yield line
         end
       else
