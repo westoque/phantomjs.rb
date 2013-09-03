@@ -53,5 +53,17 @@ describe Phantomjs do
       end
       line.should eq("bar\nfoo bar\nfoo2\n")
     end
+
+    it "accepts empty parameters without block" do
+      script = File.expand_path('./spec/runner.js')
+      output = Phantomjs.run(script, 'foo1', 'foo2', '')
+      output.should eq("bar\nfoo1\nfoo2\n\n")
+    end
+
+    it "accepts parameters with spaces without block" do
+      script = File.expand_path('./spec/runner.js')
+      output = Phantomjs.run(script, 'foo bar', 'foo2')
+      output.should eq("bar\nfoo bar\nfoo2\n")
+    end
   end
 end
