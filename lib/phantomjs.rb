@@ -24,7 +24,7 @@ class Phantomjs
           yield line
         end
       else
-        `#{EXEC} #{script} #{string_args}`
+        IO.popen([EXEC, script, args].flatten).read
       end
     rescue Errno::ENOENT
       raise CommandNotFoundError.new('Phantomjs is not installed')
