@@ -1,2 +1,5 @@
-console.log('bar ' + phantom.args[0] + ' ' + phantom.args[1]);
+console.log('bar');
+for (var i = 0; i < phantom.args.length; i++) {
+   console.log(phantom.args[i]);
+}
 phantom.exit();
