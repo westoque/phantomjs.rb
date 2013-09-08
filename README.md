@@ -16,7 +16,7 @@ gem install phantomjs.rb
 
 ## Usage
 
-For example, your phantomjs script would look like this:
+For example, if you have a phantomjs script like this:
 
 ```js
 // my_runner.js
@@ -25,11 +25,10 @@ var arg2 = phantom.args[1];
 console.log(arg1 + ' ' + arg2);
 ```
 
-Then in ruby, you can then do:
+Then in ruby:
 
 ```rb
-script = File.expand_path('my_runner.js')
-Phantomjs.run(script, 'hello', 'world')
+Phantomjs.run('my_runner.js', 'hello', 'world')
 #=> 'hello world'
 ```
 
