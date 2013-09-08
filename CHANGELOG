@@ -1,3 +1,7 @@
+2013.05.16, Version 1.0.2
+
+  * Complex parameters. (#8) (alwold)
+
 2013.05.16, Version 1.0.1
 
   * Added better error messaging when script doesn't exist
