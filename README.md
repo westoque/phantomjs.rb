@@ -16,10 +16,23 @@ gem install phantomjs.rb
 
 ## Usage
 
+```js
+// script.js
+var arg1 = phantom.args[0];
+var arg2 = phantom.args[1];
+console.log(arg1 + ' ' + arg2);
+```
+
 ```rb
 script = File.expand_path('my_runner.js')
-output = Phantomjs.run(script, 'myarg1', 'myarg2')
-p output # Whatever it outputs from STDOUT
+Phantomjs.run(script, 'hello', 'world')
+#=> 'hello world'
+```
+
+## Running the tests
+
+```
+bundle exec rake spec
 ```
 
 ## License
