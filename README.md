@@ -16,12 +16,16 @@ gem install phantomjs.rb
 
 ## Usage
 
+For example, your phantomjs script would look like this:
+
 ```js
-// script.js
+// my_runner.js
 var arg1 = phantom.args[0];
 var arg2 = phantom.args[1];
 console.log(arg1 + ' ' + arg2);
 ```
+
+Then in ruby, you can then do:
 
 ```rb
 script = File.expand_path('my_runner.js')
