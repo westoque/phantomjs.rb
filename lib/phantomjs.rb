@@ -19,11 +19,11 @@ class Phantomjs
 
     begin
       if block_given?
-        IO.popen("#{EXEC} #{script} #{string_args}").each_line do |line|
+        IO.popen([EXEC, script, args].flatten).each_line do |line|
           yield line
         end
       else
-        `#{EXEC} #{script} #{string_args}`
+        IO.popen([EXEC, script, args].flatten).read
       end
     rescue Errno::ENOENT
       raise CommandNotFoundError.new('Phantomjs is not installed')
