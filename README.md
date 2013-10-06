@@ -54,7 +54,8 @@ Phantomjs.inline(js, 'hello', 'world')
 
 ### But what about async scripts?
 
-Well it works for that too!
+Well it works for that too! Just pass a `block` to the method call and the
+argument will be whatever your script puts out on `stdout`.
 
 ```rb
 js = <<JS
