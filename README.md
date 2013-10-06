@@ -16,7 +16,7 @@ gem install phantomjs.rb
 
 ## Usage
 
-For example, if you have a phantomjs script like this:
+### Pass a file
 
 ```js
 // my_runner.js
@@ -30,6 +30,48 @@ Then in ruby:
 ```rb
 Phantomjs.run('my_runner.js', 'hello', 'world')
 #=> 'hello world'
+```
+
+### Pass a script
+
+You can also pass a javascript string as an argument and the gem
+will create a temporary file for it and run the script.
+
+NOTE: Just don't forget to call `phantom.exit`.
+
+```rb
+js = <<JS
+  console.log(phantom.args[0] + ' ' + phantom.args[1]);
+  phantom.exit();
+JS
+
+Phantomjs.run(js, 'hello', 'world')
+#=> 'hello world'
+```
+
+### But what about async scripts?
+
+Well it works for that too!
+
+```rb
+js = <<JS
+  ctr = 0;
+  setInterval(function() {
+    console.log('ctr is: ' + ctr);
+    ctr++;
+
+    if (ctr == 3) {
+      phantom.exit();
+    }
+  }, 5000);
+JS
+
+Phantomjs.inline(js) do |line|
+  p line
+end
+#=> ctr is: 0
+    ctr is: 1
+    ctr is: 2
 ```
 
 ## Running the tests
