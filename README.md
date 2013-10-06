@@ -18,6 +18,8 @@ gem install phantomjs.rb
 
 ### Pass a file
 
+Use `Phantomjs.run` to run the passed script file.
+
 ```js
 // my_runner.js
 var arg1 = phantom.args[0];
@@ -34,8 +36,9 @@ Phantomjs.run('my_runner.js', 'hello', 'world')
 
 ### Pass a script
 
-You can also pass a javascript string as an argument and the gem
-will create a temporary file for it and run the script.
+You can also pass a javascript string as an argument and call
+`Phantomjs.inline`. This will create a temporary file for it
+and run the script.
 
 NOTE: Just don't forget to call `phantom.exit`.
 
@@ -45,7 +48,7 @@ js = <<JS
   phantom.exit();
 JS
 
-Phantomjs.run(js, 'hello', 'world')
+Phantomjs.inline(js, 'hello', 'world')
 #=> 'hello world'
 ```
 
