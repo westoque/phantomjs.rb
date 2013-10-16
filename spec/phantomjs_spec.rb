@@ -1,10 +1,10 @@
-require 'phantomjs'
+require 'spec_helper'
 
 describe Phantomjs do
   describe ".run" do
     describe 'when phantomjs is non installed' do
-      before { Phantomjs::EXEC = 'not_existing_phantomjs' }
-      after  { Phantomjs::EXEC = 'phantomjs' }
+      before { Phantomjs.configure { |config| config.phantomjs_path = 'not_existing_phantomjs' } }
+      after { Phantomjs.configure { |config| config.phantomjs_path = 'phantomjs' } }
 
       it "raises an error" do
         script = File.expand_path('./spec/runner.js')
@@ -26,7 +26,7 @@ describe Phantomjs do
       result = Phantomjs.run(script, 'foo1', 'foo2')
       result.should eq("bar\nfoo1\nfoo2\n")
     end
-    
+
     it "accepts a block that will get called for each line of output" do
       line = ''
       script = File.expand_path('./spec/runner.js')
