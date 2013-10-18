@@ -78,6 +78,20 @@ end
     ctr is: 2
 ```
 
+## Configuring the path to phantomjs
+
+If you are using phantomjs in a non-typical installation path or are including the
+binary inside your application, you can configure phantomjs.rb to use a custom path.
+
+The following example is a good starting point to follow.
+
+```rb
+osx = Rails.env.development? || Rails.env.test?
+Phantomjs.configure do |config|
+  config.phantomjs_path = "#{Rails.root}/bin/phantomjs-#{osx ? 'osx' : 'x86'}"
+end
+```
+
 ## Running the tests
 
 ```
