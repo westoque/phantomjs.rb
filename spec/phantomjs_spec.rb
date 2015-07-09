@@ -67,8 +67,8 @@ describe Phantomjs do
     end
   end
 
-  describe '.inline' do
-    it 'accepts and runs a script as an argument' do
+  describe ".inline" do
+    it "accepts and runs a script as an argument" do
       js = %q(
         console.log(phantom.args[0]);
         phantom.exit();
@@ -77,7 +77,7 @@ describe Phantomjs do
       expect(result).to eq("works!\n")
     end
 
-    it 'accepts a block as an argument' do
+    it "accepts a block as an argument" do
       js = %q(
         ctr = 0;
         setInterval(function() {
@@ -90,7 +90,7 @@ describe Phantomjs do
         console.log('running interval')
       )
       expected = "running interval\nctr is 0\nctr is 1\nctr is 2\n"
-      str = '';
+      str = "";
       Phantomjs.inline(js) do |line|
         str << line
       end
