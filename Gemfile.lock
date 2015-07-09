@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    phantomjs.rb (2.0.0)
+    phantomjs.rb (2.1.0)
 
 GEM
   remote: http://rubygems.org/
