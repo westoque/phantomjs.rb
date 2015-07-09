@@ -33,16 +33,20 @@ class Phantomjs
   end
 
   private
-
+  
+  # Credit to github.com/alex88 for fixing the zombie process issue
   def execute(path, arguments, block)
     begin
+      f = IO.popen([exec, path, arguments].flatten)
       if block
-        IO.popen([exec, path, arguments].flatten).each_line do |line|
+        result = f.each_line do |line|
           block.call(line)
         end
       else
-        IO.popen([exec, path, arguments].flatten).read
+        result = f.read
       end
+      f.close
+      result
     rescue Errno::ENOENT
       raise CommandNotFoundError.new('Phantomjs is not installed')
     end
