@@ -91,10 +91,10 @@ describe Phantomjs do
       )
       expected = "running interval\nctr is 0\nctr is 1\nctr is 2\n"
       str = '';
-      result = Phantomjs.inline(js) do |line|
+      Phantomjs.inline(js) do |line|
         str << line
       end
-      str.should eq(expected)
+      str.should match(expected)
     end
   end
 end
