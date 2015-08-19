@@ -5,6 +5,10 @@ require "phantomjs/errors"
 
 class Phantomjs
 
+  def initialize(opts = {})
+    @options = opts.collect {|k,v| "#{k}=#{v}"}.join(" ")
+  end
+
   def self.run(path, *args, &block)
     Phantomjs.new.run(path, *args, &block)
   end
@@ -37,7 +41,7 @@ class Phantomjs
   # Credit to github.com/alex88 for fixing the zombie process issue
   def execute(path, arguments, block)
     begin
-      f = IO.popen([exec, path, arguments].flatten)
+      f = IO.popen([exec, @options, path, arguments].flatten)
       if block
         result = f.each_line do |line|
           block.call(line)
