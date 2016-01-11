@@ -26,6 +26,14 @@ describe Phantomjs do
       result = Phantomjs.run(script, 'foo1', 'foo2')
       expect(result).to eq("bar\nfoo1\nfoo2\n")
     end
+    
+    describe 'when Phantomjs instance got options' do
+      it "passes the options" do
+        script = File.expand_path('./spec/ping_url.js')
+        result = Phantomjs.new({"--version" => "any"}).run("")
+        expect(result).to match("[0-9]*.[0-9]*.[0-9]*\n")
+      end
+    end
 
     it "accepts a block that will get called for each line of output" do
       line = ''
