@@ -22,8 +22,9 @@ Use `Phantomjs.run` to run the passed script file.
 
 ```js
 // my_runner.js
-var arg1 = phantom.args[0];
-var arg2 = phantom.args[1];
+var system = require("system")
+var arg1 = system.args[0];
+var arg2 = system.args[1];
 console.log(arg1 + ' ' + arg2);
 ```
 
